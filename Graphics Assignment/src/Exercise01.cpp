@@ -160,34 +160,6 @@ void DisplayCallbackFunction(void)
 	unsigned int deltaT = timeSinceStart - oldTimeSinceStart;
 	oldTimeSinceStart = timeSinceStart;
 
-if (viewSelect == 0)
-{
-	
-}
-
-
-if (viewSelect == 1)
-{
-		
-
-}
-
-
-
-if (viewSelect == 2)
-{
-		
-
-}
-
-
-if (viewSelect == 3)
-{
-
-
-}
-
-
 	/* This is where we draw things */
 
 	///Bottom Right Viewport///
@@ -198,14 +170,14 @@ if (viewSelect == 3)
 	// reset perspective
 	glFrustum(-100.0f, 100.0f, -100.0f, 100.0f, 0.1f, 10000.0f);
 	
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//drawSceneObjects();
 
 	//gluLookAt(5.0f, 3.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	cam3.Update((float)deltaT / 1000.0);
 	cam3.applyCameraTransformations();
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 
 	for (int t = 0; t < obj.numtriangles; t++)
@@ -231,8 +203,8 @@ if (viewSelect == 3)
 	//gluLookAt(5.0f, 3.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
 
-	cam2.Update((float)deltaT / 1000.0);
-	cam2.applyCameraTransformations();
+	cam1.Update((float)deltaT / 1000.0);
+	cam1.applyCameraTransformations();
 
 	for (int t = 0; t < obj.numtriangles; t++)
 	{
@@ -281,8 +253,8 @@ if (viewSelect == 3)
 	glOrtho(-5.0f, 5.0f, -5.0f, 5.0f, 1.0f, 100.0f);
 	
 	gluLookAt(5.0f, 3.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	cam1.Update((float)deltaT / 1000.0);
-	cam1.applyCameraTransformations();
+	cam2.Update((float)deltaT / 1000.0);
+	cam2.applyCameraTransformations();
 
 	for (int t = 0; t < obj.numtriangles; t++)
 	{
@@ -304,7 +276,7 @@ if (viewSelect == 3)
 
 #pragma endregion
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 #pragma region bordersTL
 	if (viewSelect == 0) 
@@ -449,6 +421,7 @@ if (viewSelect == 3)
 
 
 	/* Swap Buffers to Make it show up on screen */
+	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 	glutSwapBuffers();
 }
 
@@ -468,6 +441,7 @@ void KeyboardCallbackFunction(unsigned char key, int x, int y)
 	case 'q': // the 'q' key
 		exit(0);
 		break;
+		//If statements for when the Viewport is clicked to activate keyboard controls 
 	case 'w':
 		wx = 1;
 		if (viewSelect == 3)
@@ -513,8 +487,12 @@ void KeyboardCallbackFunction(unsigned char key, int x, int y)
 		if (viewSelect == 0)
 		cam0.heldD = true;
 		break;
-	case 'r':
-	
+		//If statements to control polygon fill mode, l is line and o is fill
+	case 'l':
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		break;
+	case 'o':
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		break;
 	}
 }
@@ -601,6 +579,7 @@ void MouseClickCallbackFunction(int button, int state, int x, int y)
 	// Handle mouse clicks
 	if (state == GLUT_DOWN)
 	{
+		//Displays the x and y coordinates of where the mouse is clicked
 		std::cout << "Mouse x:" << x << " y:" << y << std::endl;
 
 		if (mousepositionX <= windowWidth / 2 && mousepositionY <= windowHeight / 2) //top left
@@ -647,6 +626,7 @@ void MousePassiveMotionCallbackFunction(int x, int y)
 	float percentYchange = (float)changeInY / (float)windowHeight;
 	float perceivedPitch = 50 * percentYchange * degToRad*90.0;
 	
+	//If cam 3 (bottom right) is selected, set pitch and yaw to the mouse
 	if (viewSelect == 3)
 		
 	{
@@ -667,7 +647,7 @@ void init()
 
 	// Enable Z-buffer read and write (for hidden surface removal)
 	glEnable(GL_DEPTH_TEST);
-
+	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_TEXTURE_2D); // textures for future use
 
 	// example06 //////

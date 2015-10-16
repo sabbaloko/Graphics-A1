@@ -1,4 +1,4 @@
-﻿Build started 10/15/2015 6:59:08 PM.
+﻿Build started 10/16/2015 3:29:09 PM.
      1>Project "C:\Users\100506828\Desktop\Computer Graphics 1350U\Assignment 1\Graphics Assignment\Graphics Assignment\Tutorial1IntroGraphics\Tutorial1IntroGraphics.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\100506828\Desktop\Computer Graphics 1350U\Assignment 1\Graphics Assignment\Graphics Assignment\lib\glm" /I"C:\Users\100506828\Desktop\Computer Graphics 1350U\Assignment 1\Graphics Assignment\Graphics Assignment\include\\" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\100506828\Desktop\Computer Graphics 1350U\Assignment 1\Graphics Assignment\Graphics Assignment\Tutorial1IntroGraphics\Intermediate\Debug\\" /Fd"C:\Users\100506828\Desktop\Computer Graphics 1350U\Assignment 1\Graphics Assignment\Graphics Assignment\Tutorial1IntroGraphics\Intermediate\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\Exercise01.cpp
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.20
+Time Elapsed 00:00:01.22
